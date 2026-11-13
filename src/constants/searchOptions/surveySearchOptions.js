@@ -1,0 +1,20 @@
+export const SURVEY_SEARCH_OPTIONS = [
+  { id: "ids", name: "Application ID", type: "text_field" },
+  { id: "name", name: "Name", type: "text_field" },
+  { id: "survey_type", name: "Survey Type", type: "autocomplete_survey" },
+  { id: "category_id", name: "Category", type: "autocomplete_category" },
+  {
+    id: "sub_category_id",
+    name: "Sub Category",
+    type: "autocomplete_sub_category",
+  },
+  { id: "ihco_id", name: "IHCO", type: "autocomplete_ihco" },
+  { id: "assign_user_id", name: "Assigned User ID", type: "autocomplete_user" },
+  { id: "start_time", name: "Start Time", type: "date" },
+  { id: "skip_time", name: "Skip Time", type: "date" },
+  { id: "end_time", name: "End Time", type: "date" },
+  { id: "created_by", name: "Created By", type: "autocomplete_user" },
+  { id: "modified_by", name: "Modified By", type: "autocomplete_user" },
+  { id: "created_date", name: "Created Date", type: "date" },
+  { id: "modified_date", name: "Modified Date", type: "date" },
+];

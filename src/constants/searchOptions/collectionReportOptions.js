@@ -1,0 +1,20 @@
+export const COLLECTION_REPORT_OPTIONS = [
+  { id: "ids", name: "Contract ID", type: "text_field" },
+  { id: "partner_id", name: "Partner ID", type: "text_field" },
+  { id: "due_date", name: "Due Date", type: "date" },
+  { id: "remaining_month", name: "Remaining Month", type: "month_year" },
+  { id: "loan_amount", name: "Loan Amount", type: "text_field" },
+  { id: "paid_date", name: "Paid Date", type: "date" },
+  { id: "status_array", name: "Contract Status", type: "autocomplete_status" },
+  { id: "overdue_status", name: "Overdue Status", type: "text_field" },
+  { id: "category_id", name: "Category", type: "autocomplete_category" },
+  {
+    id: "sub_category_id",
+    name: "Sub Category",
+    type: "autocomplete_sub_category",
+  },
+  { id: "disbursed_date", name: "Contract Date", type: "date" },
+  { id: "area", name: "Area", type: "autocomplete_state" },
+  { id: "finance_term", name: "Finance Term", type: "text_field" },
+  { id: "write_off_date", name: "Write Off Date", type: "date" },
+];

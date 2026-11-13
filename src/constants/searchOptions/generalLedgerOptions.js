@@ -1,0 +1,17 @@
+export const GENERAL_LEDGER_OPTIONS = [
+  { id: "journal_template_name", name: "Journal Template Name", type: "text_field" },
+  { id: "journal_batch_name", name: "Journal Batch Name", type: "text_field" },
+  { id: "line_no", name: "Line No", type: "text_field" },
+  { id: "posting_date", name: "Posting Date", type: "date" },
+  { id: "document_date", name: "Document Date", type: "date" },
+  { id: "document_type", name: "Document Type", type: "text_field" },
+  { id: "document_no", name: "Document No", type: "text_field" },
+  { id: "extra_document_no", name: "External Document No", type: "text_field" },
+  { id: "account_type", name: "Account Type", type: "text_field" },
+  { id: "account_no", name: "Account No", type: "text_field" },
+  { id: "amount", name: "Amount", type: "text_field" },
+  { id: "amount_lcy", name: "Amount_LCY", type: "text_field" },
+  { id: "debit_amount", name: "Debit Amount", type: "text_field" },
+  { id: "credit_amount", name: "Credit Amount", type: "text_field" },
+  { id: "acc_name", name: "Account Name", type: "text_field" },
+];
