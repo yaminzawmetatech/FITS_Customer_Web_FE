@@ -237,6 +237,7 @@ const dashboard = {
         },
         {
           id: "Administration-downpayment-setup",
+          temporarilyHidden: true,
           title: "Down payment plans",
           permission: "DownPaymentSchemeListing",
           url: "/dashboard/administration/downpayment-setup",
@@ -244,6 +245,7 @@ const dashboard = {
         },
         {
           id: "Administration-region-setup",
+          temporarilyHidden: true,
           title: "Service regions",
           permission: "RegionSetupListing",
           url: "/dashboard/administration/region-setup",
@@ -251,6 +253,7 @@ const dashboard = {
         },
         {
           id: "Administration-document-access-setup",
+          temporarilyHidden: true,
           title: "Document permissions",
           permission: "DocumentAccessSetupListing",
           url: "/dashboard/administration/document-access-setup",
@@ -258,6 +261,7 @@ const dashboard = {
         },
         {
           id: "Administration-first-due-date-setup",
+          temporarilyHidden: true,
           title: "Payment schedule rules",
           permission: "FirstDueDateSetupListing",
           url: "/dashboard/administration/first-due-date-setup",
@@ -279,6 +283,7 @@ const dashboard = {
         },
         {
           id: "Administration-vehicle-setup",
+          temporarilyHidden: true,
           title: "Vehicle catalog",
           permission: "VehicleSetupListing",
           url: "/dashboard/administration/vehicle-setup",
@@ -294,6 +299,7 @@ const dashboard = {
         },
         {
           id: "Administration-application-information-set-up",
+          temporarilyHidden: true,
           title: "Application fields",
           permission: "ApplicationInformationSetupListing",
           url: "/dashboard/administration/application-info-setup",
@@ -301,6 +307,7 @@ const dashboard = {
         },
         {
           id: "Administration-application-information-set-up-list",
+          temporarilyHidden: true,
           title: "Application field library",
           permission: "ApplicationInformationSetupListing",
           url: "/dashboard/administration/application-info-setup-list",
@@ -308,6 +315,7 @@ const dashboard = {
         },
         {
           id: "Administration-customer-bank-list",
+          temporarilyHidden: true,
           title: "Bank directory",
           permission: "ApplicationInformationSetupListing",
           url: "/dashboard/administration/customer-banks",
@@ -315,6 +323,7 @@ const dashboard = {
         },
         {
           id: "Administration-applications",
+          temporarilyHidden: true,
           title: "Loan applications",
           permission: "ApplicationListing",
           url: "/dashboard/administration/applications",

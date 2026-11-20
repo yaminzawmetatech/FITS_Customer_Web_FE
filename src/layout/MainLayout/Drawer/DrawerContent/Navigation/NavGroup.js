@@ -13,6 +13,9 @@ import NestedMenuItem from "./NestedMenuItem";
 const NavGroup = ({ item }) => {
   const menu = useSelector((state) => state.menu);
   const { drawerOpen } = menu;
+  const visibleChildren = item.children.filter(
+    (menuItem) => !menuItem.temporarilyHidden
+  );
 
   // const [open, setOpen] = React.useState(true);
   //
@@ -69,6 +72,8 @@ const NavGroup = ({ item }) => {
   //   }
   // });
 
+  if (visibleChildren.length === 0) return null;
+
   return (
     <List
       subheader={
@@ -84,7 +89,7 @@ const NavGroup = ({ item }) => {
       }
       sx={{ mb: drawerOpen ? 1.5 : 0, py: 0, zIndex: 0 }}
     >
-      {item.children.map((menuItem) => (
+      {visibleChildren.map((menuItem) => (
         <NestedMenuItem key={menuItem.id} menuItem={menuItem} />
       ))}
     </List>

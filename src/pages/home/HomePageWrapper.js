@@ -3,7 +3,6 @@ import HeaderSlider from "../HeaderSlider/HeaderSlider";
 import OurServicePage from "../our-service/OurServicePage";
 import CompanyInfoCard from "../companyInfoCard/companyInfoCard";
 import HowToApplyLoan from "../howToApplyLoan/HowToApplyLoan";
-import CustomerVoice from "../customerVoice/CustomerVoice";
 
 const HomePageWrapper = () => {
   return (
@@ -12,7 +11,6 @@ const HomePageWrapper = () => {
       <CompanyInfoCard />
       <OurServicePage />
       <HowToApplyLoan/>
-      <CustomerVoice/>
     </>
   );
 };

@@ -14,7 +14,7 @@ export const createFAQQuestion = createAsyncThunk(
   "faqQuestion/create",
   async (questionData, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await faqQuestionService.createFAQQuestion(questionData, token);
     } catch (error) {
       const message =
@@ -33,7 +33,7 @@ export const getFAQQuestions = createAsyncThunk(
   "faqQuestion/getAll",
   async (_, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await faqQuestionService.getFAQQuestions(token);
     } catch (error) {
       const message =
@@ -52,7 +52,7 @@ export const deleteFAQQuestion = createAsyncThunk(
   "faqQuestion/delete",
   async (id, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await faqQuestionService.deleteFAQQuestion(id, token);
     } catch (error) {
       const message =
@@ -71,7 +71,7 @@ export const updateFAQQuestion = createAsyncThunk(
   "faqQuestion/update",
   async ({ id, newData }, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await faqQuestionService.updateFAQQuestion(id, newData, token);
     } catch (error) {
       const message =

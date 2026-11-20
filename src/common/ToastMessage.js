@@ -12,7 +12,7 @@ export const toastMessage = {
 };
 
 export const showErrorToast = (message) => {
-  toast.error(message, toastMessage);
+  return;
 };
 
 export const showSuccessToast = (message) => {

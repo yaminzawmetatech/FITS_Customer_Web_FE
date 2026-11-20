@@ -14,7 +14,7 @@ export const getDealers = createAsyncThunk(
   "dealer/getAll",
   async (params, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await dealerSetupService.getDealers(token, params);
     } catch (error) {
       const message =

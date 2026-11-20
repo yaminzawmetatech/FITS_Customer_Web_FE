@@ -22,6 +22,7 @@ import regions from "../../features/regionSetup/regionSetupSlice";
 import documentAccessSetups from "../../features/documentAccessSetup/documentAccessSetupSlice";
 import firstDueDateSetups from "../../features/firstDueDateSetup/firstDueDateSetupSlice";
 import users from "../../features/users/usersSlice";
+import userGroups from "../../features/userGroup/userGroupSlice";
 import nrcStates from "../../features/nrcState/nrcStateSlice";
 import nrcTownships from "../../features/nrcTownship/nrcTownshipSlice";
 import projectUsersCategories from "../../features/customerUser/projectcategory/projectcategorySlice";
@@ -71,6 +72,7 @@ const reducers = combineReducers({
   firstDueDateSetups,
   userFirstDueDateSetups,
   users,
+  userGroups,
   nrcStates,
   nrcTownships,
   vehicles,

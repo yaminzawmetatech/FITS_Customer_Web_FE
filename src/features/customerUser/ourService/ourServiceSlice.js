@@ -14,7 +14,7 @@ export const createOurService = createAsyncThunk(
   "ourService/create",
   async (itemData, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await ourService.createOurService(itemData, token);
     } catch (error) {
       const message =
@@ -33,7 +33,7 @@ export const getOurServices = createAsyncThunk(
   "ourService/getAll",
   async (_, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await ourService.getOurServices(token);
     } catch (error) {
       const message =
@@ -52,7 +52,7 @@ export const deleteOurService = createAsyncThunk(
   "ourService/delete",
   async (id, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await ourService.deleteOurService(id, token);
     } catch (error) {
       const message =
@@ -71,7 +71,7 @@ export const updateOurService = createAsyncThunk(
   "ourService/update",
   async ({ id, newData }, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await ourService.updateOurService(id, newData, token);
     } catch (error) {
       const message =

@@ -206,24 +206,6 @@ export const deleteCMCOUser = createAsyncThunk(
   }
 );
 
-export const syncWebUsers = createAsyncThunk(
-  "webusers/sync",
-  async (_, thunkAPI) => {
-    try {
-      return await usersService.syncWebUsers();
-    } catch (error) {
-      console.log(error);
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
-    }
-  }
-);
-
 export const userSlice = createSlice({
   name: "users",
   initialState,
@@ -378,18 +360,6 @@ export const userSlice = createSlice({
         state.agents = action.payload.data;
       })
       .addCase(getAgentsByDealerId.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
-      })
-      .addCase(syncWebUsers.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(syncWebUsers.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
-      })
-      .addCase(syncWebUsers.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

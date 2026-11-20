@@ -15,7 +15,7 @@ export const createDownPayments = createAsyncThunk(
   'downPaymentSetups/create',
   async (downPaymentData, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token
+      const token = thunkAPI.getState().auth.user?.access_token
       return await downPaymentSchemeSetupService.createDownPayments(downPaymentData, token)
     } catch (error) {
       const message =
@@ -34,7 +34,7 @@ export const getDownPayment = createAsyncThunk(
   'downPaymentSetups',
   async (_, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token
+      const token = thunkAPI.getState().auth.user?.access_token
       return await downPaymentSchemeSetupService.getDownPayment(token)
     } catch (error) {
       const message =
@@ -52,7 +52,7 @@ export const getDownPaymentWithParams = createAsyncThunk(
   'downPaymentSetups/withParams',
   async (params, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token
+      const token = thunkAPI.getState().auth.user?.access_token
       return await downPaymentSchemeSetupService.getDownPaymentWithParams(params, token)
     } catch (error) {
       const message =
@@ -71,7 +71,7 @@ export const deleteDownPayment = createAsyncThunk(
   'downPaymentSetups/delete',
   async (id, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token
+      const token = thunkAPI.getState().auth.user?.access_token
       return await downPaymentSchemeSetupService.deleteDownPayment(id, token)
     } catch (error) {
       console.log(error)
@@ -90,7 +90,7 @@ export const updateDownPayment = createAsyncThunk(
   'downPaymentSetups/update',
   async ({ id,newData }, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token
+      const token = thunkAPI.getState().auth.user?.access_token
       return await downPaymentSchemeSetupService.updateDownPayment(id, newData, token)
     } catch (error) {
       console.log(error)

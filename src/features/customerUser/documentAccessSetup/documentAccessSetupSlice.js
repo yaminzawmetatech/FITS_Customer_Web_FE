@@ -15,7 +15,7 @@ export const getDocumentAccessSetups = createAsyncThunk(
   "documentAccessSetup/getAll",
   async (params, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await documentAccessSetupService.getDocumentAccessSetups(token, params);
     } catch (error) {
       const message =

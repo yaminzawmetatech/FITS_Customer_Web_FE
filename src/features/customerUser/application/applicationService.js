@@ -1,7 +1,7 @@
 import axiosInstance from "../../../features/api/axiosInstance";
 const base_url = import.meta.env.VITE_API_URL;
 
-const API_URL = `${base_url}user/create-applications`;
+const API_URL = `${base_url}create-application`;
 
 
 // ✅ Create new loan step

@@ -1,314 +1,148 @@
-import React, { useEffect, useState } from "react";
-import { Box, Typography, Button, Container, Grid } from "@mui/material";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ArrowForward, CheckCircleOutline } from "@mui/icons-material";
+import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import MarketingPageHero from "../../components/marketing/MarketingPageHero";
+import aboutUsIllustration from "../../assets/images/fits-services.svg";
 import CompanyInfoCardAboutUs from "./companyInfoCardAboutUs";
 import FirstService from "./component/FirstService";
 import HowToApplyLoan from "../howToApplyLoan/HowToApplyLoan";
-import { useDispatch, useSelector } from "react-redux";
-import { getOurServices } from "../../features/customerUser/ourService/ourServiceSlice";
-import aboutUsIllustration from "../../assets/images/fits-services.svg";
-import { useNavigate } from "react-router";
 
-// Custom theme
-const theme = createTheme({
-  typography: {
-    fontFamily: "Manrope, sans-serif",
-  },
-  palette: {
-    primary: { main: "#17365d", dark: "#102a49" },
-    secondary: { main: "#f46b12" },
-    text: {
-      primary: "#1F2937",
-      secondary: "#4B5563",
-    },
-  },
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          textTransform: "none",
-          borderRadius: "8px",
-          fontWeight: 600,
-        },
-      },
-    },
-  },
-});
-
-function AboutUsPage() {
-  const dispatch = useDispatch();
+const AboutUsPage = () => {
   const lang = useSelector((state) => state.language.lang);
-  const { ourServices } = useSelector((state) => state.userOurServices);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    dispatch(getOurServices());
-  }, [dispatch]);
-
-  // Auto slide
-  useEffect(() => {
-    if (ourServices.length > 0) {
-      const interval = setInterval(() => {
-        setActiveIndex((prev) =>
-          prev === ourServices.length - 1 ? 0 : prev + 1
-        );
-      }, 4000);
-      return () => clearInterval(interval);
-    }
-  }, [ourServices]);
-
-  const currentService = ourServices[activeIndex] || [];
+  const isEnglish = lang === "en";
 
   return (
-    <ThemeProvider theme={theme}>
-      <Box sx={{ fontFamily: "Manrope, sans-serif", p: 0, m: 0 }}>
-        {/* Header Section */}
-        <Box
-          sx={{
-            background: "radial-gradient(ellipse at 76% 10%, rgba(244,107,18,.24), transparent 35%), linear-gradient(130deg, #102a49 12%, #244b76 100%)",
-            minHeight: { xs: 250, sm: 310, md: 360 },
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            position: "relative",
-            width: "100%",
-            px: { xs: 2, sm: 4, md: 6, lg: 8 },
-          }}
+    <Box component="main" sx={{ bgcolor: "#fff" }}>
+      <MarketingPageHero
+        eyebrow={isEnglish ? "About FITS Finance" : "FITS Finance အကြောင်း"}
+        title={
+          isEnglish
+            ? "Finance information, made clearer."
+            : "ငွေကြေးဆိုင်ရာ အချက်အလက်များကို ပိုမိုရှင်းလင်းစွာ။"
+        }
+        description={
+          isEnglish
+            ? "We bring service information, planning tools and application guidance together to help you explore your next step."
+            : "သင့်နောက်တစ်ဆင့်ကို လေ့လာနိုင်ရန် ဝန်ဆောင်မှုအချက်အလက်များ၊ စီစဉ်တွက်ချက်မှုကိရိယာများနှင့် လျှောက်ထားမှုလမ်းညွှန်ချက်များကို တစ်နေရာတည်းတွင် စုစည်းထားပါသည်။"
+        }
+      >
+        <Button
+          component={Link}
+          to="/our-services"
+          variant="contained"
+          color="secondary"
+          endIcon={<ArrowForward />}
+          sx={{ alignSelf: "flex-start", mt: 1, px: 2.5, py: 1.25, borderRadius: 3 }}
         >
-          <Typography
-            variant="h3"
-            component="h1"
-            sx={{
-              color: "#fff",
-              fontWeight: 800,
-              letterSpacing: "-.05em",
-              fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.5rem", lg: "3rem" },
-              textAlign: "center",
-            }}
-          >
-            {lang === "en" ? "About Us" : "ကျွန်ုပ်တို့အကြောင်း"}
-          </Typography>
-        </Box>
+          {isEnglish ? "Explore our services" : "ဝန်ဆောင်မှုများကို လေ့လာရန်"}
+        </Button>
+      </MarketingPageHero>
 
-        {/* Content Section */}
-        <Container
-          maxWidth="md"
-          sx={{
-            position: "relative",
-            top: { xs: "-80px", sm: "-100px", md: "-120px" },
-            px: { xs: 3, sm: 10, md: 2 },
-          }}
-        >
-
-          <Grid
-            container
-            spacing={0}
-            sx={{
-              width: "100%",
-              borderRadius: 2,
-              overflow: "hidden",
-              boxShadow: 3,
-              transition: "all 0.4s ease-in-out",
-            }}
-          >
-            {/* Left: Image (50%) */}
-            <Grid
-              item
-              xs={12}
-              md={6}
+      <Container maxWidth="xl" sx={{ py: { xs: 6, md: 10 } }}>
+        <Grid container spacing={{ xs: 4, md: 8 }} alignItems="center">
+          <Grid item xs={12} md={6}>
+            <Box
               sx={{
-                width: "100%",
-                height: { xs: 250, sm: 300, md: 450, lg: 500 }, // 👈 responsive height for image section
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "#f4f6f9",
+                position: "relative",
+                p: { xs: 2, sm: 4 },
+                borderRadius: { xs: 4, md: 6 },
+                bgcolor: "#f4f6f9",
+                "&::before": {
+                  content: '""',
+                  position: "absolute",
+                  width: 110,
+                  height: 110,
+                  right: { xs: 10, md: 24 },
+                  top: { xs: 10, md: 24 },
+                  borderRadius: "50%",
+                  bgcolor: "rgba(244,107,18,.12)",
+                },
               }}
             >
               <Box
+                component="img"
+                src={aboutUsIllustration}
+                alt={
+                  isEnglish
+                    ? "FITS Finance planning illustration"
+                    : "FITS Finance အစီအစဉ်ရေးဆွဲမှု သရုပ်ဖော်ပုံ"
+                }
                 sx={{
+                  position: "relative",
+                  display: "block",
                   width: "100%",
-                  height: "100%",
-                  aspectRatio: { xs: "16/9", md: "auto" }, // 👈 keeps proper image ratio on smaller screens
-                  display: "flex",
+                  maxHeight: 390,
+                  objectFit: "contain",
                 }}
-              >
-                <img
-                  src={aboutUsIllustration}
-                  alt="FITS Finance illustration of a clear financial plan"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    flex: 1,
-                  }}
-                />
-              </Box>
-            </Grid>
-
-            {/* Right: Text (50%) */}
-            <Grid
-              item
-              xs={12}
-              md={6}
-              sx={{
-                backgroundColor: "#17365d",
-                color: "#fff",
-                height: { xs: 250, sm: 300, md: 450, lg: 500 }, // 👈 responsive height for text section
-                p: { xs: 3, sm: 4, md: 5 },
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                textAlign: { xs: "start", md: "left" },
-              }}
-            >
-              {/* Title */}
-              <Typography
-                variant="h5"
-                sx={{
-                  mb: 1.5,
-                  fontSize: {
-                    xs: "1.2rem",
-                    sm: "1.4rem",
-                    md: "1.8rem",
-                    lg: "2rem",
-                  },
-                  fontWeight: 600,
-                }}
-              >
-                {currentService?.[`title_${lang}`] || "Service Title"}
-              </Typography>
-
-              {/* Description */}
-              <Typography
-                variant="body1"
-                sx={{
-                  mb: 3,
-                  color: "rgba(216, 214, 214, 0.9)",
-                  fontSize: {
-                    xs: "0.9rem",
-                    sm: "1rem",
-                    md: "1.05rem",
-                    lg: "1.1rem",
-                  },
-                  textAlign: "justify",
-                }}
-              >
-                {currentService?.[`description_${lang}`] ||
-                  "Service description text goes here."}
-              </Typography>
-
-              {/* Button */}
-              <Button
-                variant="contained"
-                sx={{
-                  alignSelf: { xs: "center", sm: "flex-start" },
-                  backgroundColor: "#f46b12",
-                  "&:hover": { backgroundColor: "#df5908" },
-                  px: { xs: 2.5, sm: 3 },
-                  py: { xs: 1, sm: 1.2 },
-                  fontSize: { xs: "0.8rem", sm: "0.9rem", md: "1rem" },
-                  borderRadius: 2,
-                }}
-              >
-                Read More
-              </Button>
-            </Grid>
+              />
+            </Box>
           </Grid>
+          <Grid item xs={12} md={6}>
+            <Stack spacing={2.25}>
+              <Typography
+                sx={{
+                  color: "secondary.dark",
+                  fontSize: "0.75rem",
+                  fontWeight: 800,
+                  letterSpacing: ".15em",
+                  textTransform: "uppercase",
+                }}
+              >
+                {isEnglish ? "Who we are" : "ကျွန်ုပ်တို့အကြောင်း"}
+              </Typography>
+              <Typography
+                component="h2"
+                sx={{
+                  color: "primary.dark",
+                  fontSize: { xs: "2rem", md: "2.8rem" },
+                  fontWeight: 800,
+                  lineHeight: 1.12,
+                  letterSpacing: "-.05em",
+                }}
+              >
+                {isEnglish
+                  ? "A more considered way to explore financing."
+                  : "ငွေကြေးဝန်ဆောင်မှုများကို သေချာစွာ လေ့လာနိုင်မည့် နည်းလမ်း။"}
+              </Typography>
+              <Typography sx={{ color: "text.secondary", lineHeight: 1.85 }}>
+                {isEnglish
+                  ? "FITS Finance helps bring the details into focus. Explore the information available, use the planning tools and review the application steps before deciding what works for you."
+                  : "FITS Finance သည် လိုအပ်သောအချက်အလက်များကို ရှင်းလင်းစွာ လေ့လာနိုင်ရန် ကူညီပေးပါသည်။ မိမိအတွက် သင့်တော်သောရွေးချယ်မှုကို မဆုံးဖြတ်မီ ဝန်ဆောင်မှုအချက်အလက်များ၊ တွက်ချက်မှုကိရိယာများနှင့် လျှောက်ထားမှုအဆင့်များကို လေ့လာနိုင်ပါသည်။"}
+              </Typography>
+              <Stack spacing={1}>
+                {[
+                  isEnglish ? "Explore service information" : "ဝန်ဆောင်မှုအချက်အလက်များကို လေ့လာပါ",
+                  isEnglish ? "Plan with clear estimates" : "ရှင်းလင်းသော ခန့်မှန်းချက်များဖြင့် စီစဉ်ပါ",
+                  isEnglish ? "Understand each application step" : "လျှောက်ထားမှုအဆင့်များကို နားလည်ပါ",
+                ].map((item) => (
+                  <Stack key={item} direction="row" spacing={1} alignItems="center">
+                    <CheckCircleOutline sx={{ color: "secondary.main", fontSize: 20 }} />
+                    <Typography sx={{ color: "primary.dark", fontWeight: 650 }}>
+                      {item}
+                    </Typography>
+                  </Stack>
+                ))}
+              </Stack>
+              <Button
+                component={Link}
+                to="/loan-calculator"
+                variant="outlined"
+                endIcon={<ArrowForward />}
+                sx={{ alignSelf: "flex-start", mt: 1, borderRadius: 3, px: 2.25, py: 1.1 }}
+              >
+                {isEnglish ? "Try the payment planner" : "အရစ်ကျတွက်ချက်ရန်"}
+              </Button>
+            </Stack>
+          </Grid>
+        </Grid>
+      </Container>
 
-          {/* Prev / Next Buttons */}
-          <Box
-            sx={{
-              mt: 3,
-              display: "flex",
-              justifyContent: "center",
-              gap: 2,
-              flexWrap: "wrap",
-            }}
-          >
-            <Button
-              variant="contained"
-              size="small"
-              onClick={() =>
-                setActiveIndex((prev) =>
-                  prev === 0 ? ourServices.length - 1 : prev - 1
-                )
-              }
-              sx={{
-                backgroundColor: "rgba(30,58,138,0.9)",
-                "&:hover": { backgroundColor: "#df5908" },
-                fontSize: { xs: "0.8rem", sm: "0.9rem" },
-              }}
-            >
-              Prev
-            </Button>
-            <Button
-              variant="contained"
-              size="small"
-              onClick={() =>
-                setActiveIndex((prev) =>
-                  prev === ourServices.length - 1 ? 0 : prev + 1
-                )
-              }
-              sx={{
-                backgroundColor: "rgba(30,58,138,0.9)",
-                "&:hover": { backgroundColor: "#df5908" },
-                fontSize: { xs: "0.8rem", sm: "0.9rem" },
-              }}
-            >
-              Next
-            </Button>
-          </Box>
-
-          {/* Who Are We Section */}
-          <Box
-            sx={{
-              mt: { xs: 6, sm: 8, md: 10 },
-              textAlign: "center",
-              px: { xs: 2, sm: 3, md: 5 },
-            }}
-          >
-            <Typography
-              variant="h4"
-              sx={{
-                fontWeight: 700,
-                fontSize: { xs: "1.6rem", sm: "1.8rem", md: "2rem" },
-                mb: 2,
-              }}
-            >
-              {lang === "en" ? "Who are we?" : "ကျွန်ုပ်တို့အကြောင်း"}
-            </Typography>
-            <Typography
-              variant="body1"
-              sx={{
-                color: "text.secondary",
-                mb: 4,
-                fontSize: { xs: "0.9rem", sm: "1rem" },
-                textAlign: "justify",
-              }}
-            >
-              {lang === "en"
-                ? "FITS Finance is here to make financing easier to understand and easier to explore. We bring helpful information and considered options together, so you can make a choice that feels right for your plans."
-                : "FITS Finance သည် ငွေကြေးဝန်ဆောင်မှုများကို နားလည်ရလွယ်ကူစေရန် ရည်ရွယ်ပါသည်။ သင့်အစီအစဉ်နှင့် ကိုက်ညီသော ရွေးချယ်မှုကို ဆုံးဖြတ်နိုင်ရန် အသုံးဝင်သော အချက်အလက်များနှင့် ရွေးချယ်စရာများကို ပံ့ပိုးပေးပါသည်။"}
-            </Typography>
-            <Button
-              variant="contained"
-              size="large"
-              onClick={() => navigate("/apply-now")}
-            >
-              {lang === "en" ? "Apply Now" : "လျှောက်ထားရန်"}
-            </Button>
-          </Box>
-        </Container>
-
-        {/* Other Components */}
-        <CompanyInfoCardAboutUs />
-        <FirstService />
-        <HowToApplyLoan />
-      </Box>
-    </ThemeProvider>
+      <CompanyInfoCardAboutUs />
+      <FirstService />
+      <HowToApplyLoan />
+    </Box>
   );
-}
+};
 
 export default AboutUsPage;

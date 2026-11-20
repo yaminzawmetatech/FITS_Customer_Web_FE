@@ -14,7 +14,7 @@ export const createApplyLoanStep = createAsyncThunk(
   "applyLoanSteps/create",
   async (loanStepData, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await applyLoanStepService.createApplyLoanStep(loanStepData, token);
     } catch (error) {
       const message =
@@ -33,7 +33,7 @@ export const getApplyLoanSteps = createAsyncThunk(
   "applyLoanSteps/getAll",
   async (_, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await applyLoanStepService.getApplyLoanSteps(token);
     } catch (error) {
       const message =
@@ -52,7 +52,7 @@ export const deleteApplyLoanStep = createAsyncThunk(
   "applyLoanSteps/delete",
   async (id, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await applyLoanStepService.deleteApplyLoanStep(id, token);
     } catch (error) {
       const message =
@@ -71,7 +71,7 @@ export const updateApplyLoanStep = createAsyncThunk(
   "applyLoanSteps/update",
   async ({ id, newData }, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await applyLoanStepService.updateApplyLoanStep(id, newData, token);
     } catch (error) {
       const message =
@@ -90,7 +90,7 @@ export const batchDeleteApplyLoanSteps = createAsyncThunk(
   "applyLoanSteps/batchDelete",
   async (ids, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await applyLoanStepService.batchDeleteApplyLoanSteps(ids, token);
     } catch (error) {
       const message =

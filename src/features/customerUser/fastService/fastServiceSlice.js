@@ -14,7 +14,7 @@ export const createFastService = createAsyncThunk(
   "fastService/create",
   async (serviceData, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await fastService.createFastService(serviceData, token);
     } catch (error) {
       const message =
@@ -33,7 +33,7 @@ export const getFastServices = createAsyncThunk(
   "fastService/getAll",
   async (_, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await fastService.getFastServices(token);
     } catch (error) {
       const message =
@@ -52,7 +52,7 @@ export const deleteFastService = createAsyncThunk(
   "fastService/delete",
   async (id, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await fastService.deleteFastService(id, token);
     } catch (error) {
       const message =
@@ -71,7 +71,7 @@ export const updateFastService = createAsyncThunk(
   "fastService/update",
   async ({ id, newData }, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await fastService.updateFastService(id, newData, token);
     } catch (error) {
       const message =

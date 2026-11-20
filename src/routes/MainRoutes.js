@@ -22,6 +22,9 @@ const AboutUsPage = Loadable(lazy(() => import('../pages/aboutUs/AboutUsPage')))
 const FaqPage = Loadable(lazy(() => import('../pages/faq/FaqPage')));
 const Dashboard = Loadable(lazy(() => import('../pages/dashboard/index')));
 const LoanCalculatorPage = Loadable(lazy(() => import('../pages/LoanCalculator/LoanCalculatorPage')));
+const PublicOurServicesPage = Loadable(
+  lazy(() => import("../pages/our-service/OurServicePage"))
+);
 
 
 const OurServiceIndex = Loadable(
@@ -155,6 +158,7 @@ const MainRoutes = [
     children: [
       { path: '/', element: <Home /> },
       { path: 'about-us', element: <AboutUsPage /> },
+      { path: 'our-services', element: <PublicOurServicesPage standalone /> },
       { path: 'faq', element: <FaqPage /> },
       { path: 'loan-calculator', element: <LoanCalculatorPage /> },
       { path: 'apply-now', element: <CreateApplicationInformationIndex /> },

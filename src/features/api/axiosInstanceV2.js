@@ -32,6 +32,7 @@ axiosInstanceV2.interceptors.response.use(
   (response) => {
     return response;
   },
+  (error) => Promise.reject(error)
 );
 
 export default axiosInstanceV2;

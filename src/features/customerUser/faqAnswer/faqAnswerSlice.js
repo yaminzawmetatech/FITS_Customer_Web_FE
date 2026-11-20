@@ -14,7 +14,7 @@ export const createFAQAnswer = createAsyncThunk(
   "faqAnswer/create",
   async (answerData, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await faqAnswerService.createFAQAnswer(answerData, token);
     } catch (error) {
       const message =
@@ -33,7 +33,7 @@ export const getFAQAnswers = createAsyncThunk(
   "faqAnswer/getAll",
   async (_, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await faqAnswerService.getFAQAnswers(token);
     } catch (error) {
       const message =
@@ -52,7 +52,7 @@ export const deleteFAQAnswer = createAsyncThunk(
   "faqAnswer/delete",
   async (id, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await faqAnswerService.deleteFAQAnswer(id, token);
     } catch (error) {
       const message =
@@ -71,7 +71,7 @@ export const updateFAQAnswer = createAsyncThunk(
   "faqAnswer/update",
   async ({ id, newData }, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await faqAnswerService.updateFAQAnswer(id, newData, token);
     } catch (error) {
       const message =

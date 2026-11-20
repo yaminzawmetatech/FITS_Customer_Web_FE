@@ -2,12 +2,10 @@ import axiosInstance from "../../features/api/axiosInstance";
 const base_url = import.meta.env.VITE_API_URL;
 
 const API_URL = `${base_url}users`;
-const WAPI_URL = `${base_url}users`;
-const SYNC_URL = `${base_url}admin/sync-web-users`;
 
 // Get users
 const getUsers = async (params) => {
-  const response = await axiosInstance.get(WAPI_URL, {params});
+  const response = await axiosInstance.get(API_URL, { params });
 
   return response.data;
 };
@@ -64,11 +62,6 @@ const deleteCMCOUser = async (district_id, user_id) => {
   return response.data;
 };
 
-const syncWebUsers = async () => {
-  const response = await axiosInstance.post(SYNC_URL);
-  return response.data;
-};
-
 const usersService = {
   createUser,
   getUsers,
@@ -79,7 +72,6 @@ const usersService = {
   getCMCOUserByTownshipId,
   deleteCMCOUser,
   getAgentsByDealerId,
-  syncWebUsers,
 };
 
 export default usersService;

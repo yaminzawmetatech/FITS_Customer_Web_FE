@@ -128,7 +128,7 @@ const CreateApplicationInformationIndex = () => {
       <Banner />
       <Container maxWidth="lg" sx={{ mt: 1, mb: 3 }}>
         <Box sx={{ p: { xs: 1, sm: 2 } }}>
-          <Box sx={{ textAlign: "start", p: { xs: 1, sm: 2 } }}>
+          <Box id="select-product" sx={{ textAlign: "start", p: { xs: 1, sm: 2 } }}>
             <Typography
               variant="h5"
               component="h2"
@@ -147,37 +147,55 @@ const CreateApplicationInformationIndex = () => {
                 <Paper
                   onClick={() => handleProductSelect(product.id)}
                   sx={{
-                    p: 3,
+                    p: { xs: 2, sm: 2.5 },
+                    minHeight: { xs: 96, sm: 112 },
                     textAlign: "center",
-                    borderRadius: 2,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderRadius: 3,
                     cursor: "pointer",
-                    transition: "transform 0.2s, box-shadow 0.2s",
-                    borderColor: "primary.main",
+                    border: "1px solid",
+                    borderColor:
+                      selectedProductId === product.id
+                        ? "primary.main"
+                        : "rgba(23,54,93,.14)",
+                    backgroundColor:
+                      selectedProductId === product.id ? "#edf4fc" : "#fff",
+                    boxShadow:
+                      selectedProductId === product.id
+                        ? "0 0 0 2px rgba(23,54,93,.1)"
+                        : "0 4px 14px rgba(23,54,93,.04)",
+                    transition: "transform 0.2s, box-shadow 0.2s, background-color 0.2s",
                     "&:hover": {
-                      transform: "translateY(-5px)",
-                      boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.1)",
+                      transform: "translateY(-3px)",
+                      boxShadow: "0 10px 24px rgba(23,54,93,.1)",
                     },
                   }}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={selectedProductId === product.id}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      handleProductSelect(product.id);
+                    }
+                  }}
                 >
-                  {/* ✅ Replace icon with image */}
-                  <Box sx={{ mb: 2 }}>
-                    <img
-                      src={product.image} // <- image URL from your data
-                      alt={product.name_en}
-                      style={{
-                        width: "60px",
-                        height: "60px",
-                        objectFit: "contain",
-                      }}
-                    />
-                  </Box>
-
                   <Typography
                     variant="h6"
-                    fontWeight="medium"
-                    color="text.primary"
-                    wordWrap="break-word"
-                    whiteSpace="normal"
+                    fontWeight={selectedProductId === product.id ? 700 : 550}
+                    color={
+                      selectedProductId === product.id
+                        ? "primary.dark"
+                        : "text.primary"
+                    }
+                    sx={{
+                      fontSize: { xs: "0.95rem", sm: "1.05rem" },
+                      lineHeight: lang === "en" ? 1.5 : 1.8,
+                      wordBreak: "break-word",
+                      whiteSpace: "normal",
+                    }}
                   >
                     {lang === "en" ? product.name_en : product.name_mm}
                   </Typography>
@@ -191,6 +209,7 @@ const CreateApplicationInformationIndex = () => {
             <Box sx={{ px: { xs: 1, sm: 2 } }}>
               <Backdrop
                 sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={categoryIsLoading || documentAccessLoading}
               >
                 <CircularProgress color="inherit" />
               </Backdrop>

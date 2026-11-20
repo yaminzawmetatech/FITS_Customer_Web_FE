@@ -13,7 +13,7 @@ export const createProjectCategory = createAsyncThunk(
   "projectcategory/create",
   async (projectcategoryData, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await projectcategoryService.createProjectCategory(
         projectcategoryData,
         token
@@ -34,7 +34,7 @@ export const getProjectCategory = createAsyncThunk(
   "projectCategories",
   async (_, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await projectcategoryService.getProjectCategory(token);
     } catch (error) {
       const message =
@@ -52,7 +52,7 @@ export const deleteProjectCategory = createAsyncThunk(
   "projectcategory/delete",
   async (id, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await projectcategoryService.deleteProjectCategory(id, token);
     } catch (error) {
       const message =
@@ -70,7 +70,7 @@ export const updateProjectCategory = createAsyncThunk(
   "projectcategory/update",
   async ({ id, newData }, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await projectcategoryService.updateProjectCategory(
         id,
         newData,
@@ -111,7 +111,7 @@ export const batchDeleteProjectCategory = createAsyncThunk(
   "projectcategory/batchDelete",
   async (ids, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await projectcategoryService.batchDeleteProjectCategory(
         ids,
         token

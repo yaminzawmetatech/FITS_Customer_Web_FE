@@ -13,7 +13,7 @@ export const createApplication = createAsyncThunk(
     "application/create",
     async (data, thunkAPI) => {
         try {
-            const token = thunkAPI.getState().auth.user.access_token;
+            const token = thunkAPI.getState().auth.user?.access_token;
             return await applicationService.createApplication(data, token);
         } catch (error) {
             const message =

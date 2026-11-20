@@ -15,6 +15,8 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import ArrowForward from "@mui/icons-material/ArrowForward";
+import LanguageOutlined from "@mui/icons-material/LanguageOutlined";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, Link as RouterLink } from "react-router-dom";
 import { setLanguage } from "../../../features/language/languageSlice";
@@ -32,12 +34,12 @@ const Header = ({ open, handleDrawerToggle }) => {
   const handleDrawerToggleMenu = () => setMobileOpen(!mobileOpen);
 
   const navLinks = [
-    { label: { en: "Welcome", mm: "မူလစာမျက်နှာ" }, to: "/" },
-    { label: { en: "About FITS", mm: "FITS အကြောင်း" }, to: "/about-us" },
-    { label: { en: "Financing", mm: "ငွေကြေးဝန်ဆောင်မှုများ" }, to: "/our-services" },
-    { label: { en: "Payment planner", mm: "အရစ်ကျတွက်ချက်ရန်" }, to: "/loan-calculator" },
-    { label: { en: "Help center", mm: "အကူအညီနှင့် မေးခွန်းများ" }, to: "/faq" },
-    { label: { en: "Reach us", mm: "ကျွန်ုပ်တို့ထံ ဆက်သွယ်ရန်" }, to: "/contact" },
+    { label: { en: "Home", mm: "မူလစာမျက်နှာ" }, to: "/" },
+    { label: { en: "About", mm: "FITS အကြောင်း" }, to: "/about-us" },
+    { label: { en: "Services", mm: "ဝန်ဆောင်မှုများ" }, to: "/our-services" },
+    { label: { en: "Calculator", mm: "အရစ်ကျတွက်ချက်ရန်" }, to: "/loan-calculator" },
+    { label: { en: "Help Center", mm: "အကူအညီစင်တာ" }, to: "/faq" },
+    { label: { en: "Contact", mm: "ဆက်သွယ်ရန်" }, to: "/contact" },
   ];
 
   useEffect(() => {
@@ -128,7 +130,7 @@ const Header = ({ open, handleDrawerToggle }) => {
               aria-label="Main navigation"
               direction="row"
               spacing={0.5}
-              sx={{ mx: "auto" }}
+              sx={{ mx: "auto", alignItems: "center" }}
             >
               {navLinks.map(({ label, to }) => (
                 <Button
@@ -138,11 +140,16 @@ const Header = ({ open, handleDrawerToggle }) => {
                   color="inherit"
                   sx={{
                     px: 1.75,
-                    borderRadius: 3,
-                    color: location.pathname === to ? "secondary.dark" : "text.secondary",
-                    fontSize: "0.9rem",
-                    fontWeight: location.pathname === to ? 700 : 550,
-                    "&:hover": { bgcolor: "secondary.lighter", color: "secondary.dark" },
+                    minHeight: 40,
+                    borderRadius: 99,
+                    color: location.pathname === to ? "#fff" : "#102a49",
+                    bgcolor: location.pathname === to ? "#f46b12" : "transparent",
+                    fontSize: "0.86rem",
+                    fontWeight: location.pathname === to ? 750 : 650,
+                    "&:hover": {
+                      bgcolor: location.pathname === to ? "#e45f08" : "#fff0e4",
+                      color: location.pathname === to ? "#fff" : "#d65300",
+                    },
                   }}
                 >
                   {label[lang]}
@@ -155,9 +162,18 @@ const Header = ({ open, handleDrawerToggle }) => {
               <Button
                 onClick={handleLanguageToggle}
                 color="inherit"
-                sx={{ minWidth: 48, color: "text.secondary", fontWeight: 700 }}
+                startIcon={<LanguageOutlined sx={{ fontSize: 18 }} />}
+                sx={{
+                  minWidth: 78,
+                  px: 1,
+                  color: "#102a49",
+                  fontSize: "0.82rem",
+                  fontWeight: 700,
+                  borderLeft: "1px solid #d6deea",
+                  borderRadius: 0,
+                }}
               >
-                {lang === "en" ? "MM" : "EN"}
+                {lang === "en" ? "EN" : "MM"}
               </Button>
             )}
             {!isMobile && (
@@ -165,7 +181,15 @@ const Header = ({ open, handleDrawerToggle }) => {
                 component={RouterLink}
                 to="/apply-now"
                 variant="contained"
-                sx={{ px: 2.5, py: 1.1, borderRadius: 3, whiteSpace: "nowrap" }}
+                endIcon={<ArrowForward />}
+                sx={{
+                  px: 2.25,
+                  py: 1.1,
+                  borderRadius: 99,
+                  whiteSpace: "nowrap",
+                  bgcolor: "#102f5c",
+                  "&:hover": { bgcolor: "#0a2448" },
+                }}
               >
                 {lang === "en" ? "Start an application" : "လျှောက်လွှာ စတင်ရန်"}
               </Button>

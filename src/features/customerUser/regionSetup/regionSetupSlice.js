@@ -14,7 +14,7 @@ export const createRegion = createAsyncThunk(
   "region/create",
   async (regionData, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await regionSetupService.createRegion(regionData, token);
     } catch (error) {
       const message =
@@ -47,7 +47,7 @@ export const deleteRegion = createAsyncThunk(
   "region/delete",
   async (id, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await regionSetupService.deleteRegion(id, token);
     } catch (error) {
       const message =
@@ -64,7 +64,7 @@ export const updateRegion = createAsyncThunk(
   "region/update",
   async ({ id, newData }, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.access_token;
+      const token = thunkAPI.getState().auth.user?.access_token;
       return await regionSetupService.updateRegion(id, newData, token);
     } catch (error) {
       const message =

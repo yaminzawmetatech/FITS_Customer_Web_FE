@@ -304,7 +304,13 @@ const LoanInformation = ({
   const interestRate = watch("interest_rate");
 
   useEffect(() => {
-    if (downPaymentSetups?.length && firstDueDateSetups?.length) {
+    if (
+      downPaymentSetups?.length &&
+      firstDueDateSetups?.length &&
+      Number(loan_amount) > 0 &&
+      Number(loan_term_duration) > 0 &&
+      Number(interestRate) > 0
+    ) {
       try {
         const data = {
           loan_amount,

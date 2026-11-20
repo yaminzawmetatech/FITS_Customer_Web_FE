@@ -90,6 +90,9 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   async (error) => {
+    if (error?.code === "ERR_API_CALLS_DISABLED") {
+      return Promise.reject(error);
+    }
     if (!error?.response?.status) {
       toast.error(error?.message);
     } else if (error?.response?.status === 401) {

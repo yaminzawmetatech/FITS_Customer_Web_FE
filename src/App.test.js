@@ -27,14 +27,14 @@ describe("homepage hero", () => {
 
     expect(screen.getAllByRole("img", { name: "FITS Finance" }).length).toBeGreaterThan(0);
     expect(
-      screen.getByRole("heading", { name: /make room for what's next/i })
+      screen.getByRole("heading", { name: /plan your next move with confidence/i })
     ).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /explore financing/i })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: /start an application/i })).toHaveAttribute(
       "href",
       "/apply-now"
     );
     expect(
-      screen.getByRole("link", { name: /try the calculator/i })
+      screen.getByRole("link", { name: /try the payment planner/i })
     ).toHaveAttribute("href", "/loan-calculator");
   });
 });
